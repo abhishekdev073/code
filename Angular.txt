@@ -1,0 +1,162 @@
+1 npm install -g @angular/cli@latest
+
+2 ng new my-first-angular
+
+3 ng serve  
+
+4 ng generate component xyz
+
+ CREATE src/app/xyz/xyz.component.html (18 bytes)
+CREATE src/app/xyz/xyz.component.spec.ts (607 bytes)
+CREATE src/app/xyz/xyz.component.ts (263 bytes)
+CREATE src/app/xyz/xyz.component.css (0 bytes)
+UPDATE src/app/app.module.ts (535 bytes)
+
+5 selector: 'app-server' or selector: '[app-server]' or selector: '.app-server'
+
+<app-server></app-server> or <div app-server></div> or <div class="app-server"></div>
+
+6 angular.json  main.ts and index.html
+
+7 main.ts boostrap the appmodule
+
+8 appmoudule contain all the component and boostrap the main component
+
+9 A polyfill is a browser fallback, made in JavaScript, that allows functionality you expect to work in modern browsers to work in older browsers, e.g., to support canvas (an HTML5 feature) in older browsers.
+
+10 :-Components are the main building block for Angular applications
+
+11 Components lifecycle events :- You can respond to events in the lifecycle of a component or directive
+
+		ngOnChanges :- Called before ngOnInit(),called on data-bound input properties change.
+					Note that this happens very frequently,
+					so any operation you perform here impacts performance significantly.
+					if your component has no inputs or you use it without providing any inputs, the framework will not call ngOnChanges().
+
+		ngOnInit  :- Called once, after the first ngOnChanges()
+
+		ngDoCheck :-Detect and act upon changes that Angular can't or won't detect on its own. Called immediately after ngOnChanges() on every change detection run, and immediately after ngOnInit() on the first run.
+
+		ngAfterContentInit :-Called once after the first ngDoCheck().
+
+		ngAfterContentChecked :- Called after ngAfterContentInit() and every subsequent ngDoCheck().
+
+		ngAfterViewInit :- Called once after the first ngAfterContentChecked().
+
+		ngAfterViewChecked :- Called after the ngAfterViewInit() and every subsequent ngAfterContentChecked
+
+		ngOnDestroy :- Called immediately before Angular destroys the directive or component
+
+
+12 Component Interaction
+
+  Child to parent ------Input & Output 
+    <h3>Agree: {{agreed}}, Disagree: {{disagreed}}</h3>
+    <app-voter *ngFor="let voter of voters"
+      [name]="voter"
+      (voted)="onVoted($event)">
+    </app-voter>
+
+export class VoteTakerComponent {
+  agreed = 0;
+  disagreed = 0;
+  voters = ['Narco', 'Celeritas', 'Bombasto'];
+
+  onVoted(agreed: boolean) {
+    agreed ? this.agreed++ : this.disagreed++;
+  }
+}
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+export class VoterComponent {
+  @Input()  name: string;
+  @Output() voted = new EventEmitter<boolean>();
+  didVote = false;
+
+  vote(agreed: boolean) {
+    this.voted.emit(agreed);
+    this.didVote = true;
+  }
+}
+
+Parent to child
+Parent interacts with child via local variable
+Parent access child by creating a template reference variable for the child element  #timer
+
+<button (click)="timer.start()">Start</button>
+  <button (click)="timer.stop()">Stop</button>
+  <div class="seconds">{{timer.seconds}}</div>
+  <app-countdown-timer #timer></app-countdown-timer>
+  export class CountdownTimerComponent implements OnDestroy {
+   intervalId = 0;
+  message = '';
+  seconds = 11;
+  start() { this.countDown(); }
+  stop()  {
+    this.message = `Holding at T-${this.seconds} seconds`;
+  }
+  }
+
+//// Parent calls an @ViewChild() /////////
+
+inject the child component into the parent as a ViewChild.
+
+<button (click)="start()">Start</button>
+  <button (click)="stop()">Stop</button>
+  <div class="seconds">{{ seconds() }}</div>
+  <app-countdown-timer></app-countdown-timer>
+
+
+export class CountdownViewChildParentComponent implements AfterViewInit {
+
+  @ViewChild(CountdownTimerComponent)
+  private timerComponent: CountdownTimerComponent;
+ 
+  seconds() { return 0; }
+  start() { this.timerComponent.start(); }
+  stop() { this.timerComponent.stop(); }
+ 
+  }
+
+  Parent and children communicate via a service
+ 
+  
+13 @Input() and @Output() properties
+
+ input send data from parent to child
+ call from child to parent
+ 
+ <app-input-output [item]="currentItem" (deleteRequest)="crossOffItem($event)"></app-input-output>
+ 
+ @Input() item: string;
+@Output() deleteRequest = new EventEmitter<string>();
+
+
+14 Dynamic component loader
+
+ComponentFactoryResolver to add components dynamically.
+
+The anchor directive  :- Define anchor point to tell Angular where to insert components
+
+ <ng-template adHost></ng-template>
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+
