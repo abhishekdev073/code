@@ -394,6 +394,37 @@ The anchor directive  :- Define anchor point to tell Angular where to insert com
   
  
 
+//////////////////////////////////////////////////////////
+1 component :-component is logical piece of code which consist of class template and decoraor rendering the data
+3 filter :- to manipulate the data on view;
+4 directive :-using custom tag in html, we extend html like ng-app,ng-init,ng-repeat,Angular 2 components are actually just directives under the hood
+5 component directive :-directives with a template
+6 Structural directives :— change the DOM layout by adding and removing DOM elements ,ng-if ,ng-repeat
+7 Attribute directives :— change the appearance or behavior of an element, component, or another directive,<p appHighlight>Highlight me!</p> change is color by attribute
+9 intercepter :- adding token in evey http request for authentications,create logging also,can also cache the req or response
+10 oberavable rxjs :map, debounce,delay,filter,cancel previous request;
+11 ngModules :-we write code in differenct block for sepration,in ngmodules we define componetn,inject services
+12 dependency injection :- we can inject service or method like http in component or ng module at root level,we dont have to create new instance and its usefull for testing
+13 Hierarchical Dependency Injectors :- when component looks for its dependecy method if its dont find its goes its parent level till continue its reaches top level root level ng module
+14 service isolation injector :- we want to access service only on its component use  providers: [ VillainsService ]
+
+25 lazy loading :- module get laoded when its required not on startup;
+
+29 Reactive programming :- angular with rxjs
+30 reactive form :- View get updated when we update the data model
+31 template form :- View get update automatically when we chagne ng-model
+
+39 Event:to transefer data between component ex: input output
+40 service : its common functionality can be inject in ng-module can be used in our component
+
+
+
+ 
+
+
+
+
+  
 
 
 

@@ -1,0 +1,73 @@
+
+\d	Any digit character
+\w	An alphanumeric character (“word character”)
+\s	Any whitespace character (space, tab, newline, and similar)
+\D	A character that is not a digit
+\W	A nonalphanumeric character
+\S	A nonwhitespace character
+.	Any character except for newline
+\ / backspace
+
+
++ atleast one time      /"\d+/.test('"3ab')
+? optional                   /abh?i/.test('abi')
+{2}           number of time should present      /\d{3}/.test('345')
+{3,5}         rannge from                                                                 /\d{3,6}/.test('34')
+/b /b  start and end       /\ba(\w)+m\b/.test('aabhm') 
+||     test for abhi                              /(abhi||man)/.test('abhi')
+^   select begging of string    "abhi shek k".replace(/\b^\w/g,s=>s.toUpperCase())
+
+
+console.log("  word".search(/\S/));  worked as index of
+/abc/g.exec('abc xyz')
+    
+
+1  /123/.test(123)  true
+2   /[1]/.test(134)  true
+3   /[0-9]/.test('3abhi')  true
+4  /[^12]/.test(12012456) true
+5  /[^1]/.test(11')   false
+
+/"\d+/.test('"3ab')
+
+* means same allow zero time
+
+must appear one time
+
+/abh?i/.test('abi')
+
+
+/\b([01]+b|[\da-f]+h|\d+)\b/
+
+
+code.replace(/\/\/.*|\/\*[^]*\*\//g, "");
+
+replace commented code
+
+
+
+/abc/	A sequence of characters
+/[abc]/	Any character from a set of characters
+/[^abc]/	Any character not in a set of characters
+/[0-9]/	Any character in a range of characters
+/x+/	One or more occurrences of the pattern x
+/x+?/	One or more occurrences, nongreedy
+/x*/	Zero or more occurrences
+/x?/	Zero or one occurrence
+/x{2,4}/	Two to four occurrences
+/(abc)/	A group
+/a|b|c/	Any one of several patterns
+/\d/	Any digit character
+/\w/	An alphanumeric character (“word character”)
+/\s/	Any whitespace character
+/./	Any character except newlines
+/\b/	A word boundary
+/^/	Start of input
+/$/	End of input
+
+
+
+
+
+
+

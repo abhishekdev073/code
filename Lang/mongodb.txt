@@ -20,10 +20,10 @@ mongodump --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,c
 
 mongoexport -d comment-c comments -o outfile.json
 
-mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password vz82j3nGYjoElabG  --authenticationDatabase admin 
+mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password <PASSWORD>  --authenticationDatabase admin 
 
-mongodump --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password vz82j3nGYjoElabG --authenticationDatabase admin --db comment
+mongodump --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password <PASSWORD> --authenticationDatabase admin --db comment
 
 
 
-mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password vz82j3nGYjoElabG  --authenticationDatabase admin 
+mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password <PASSWORD>  --authenticationDatabase admin 
