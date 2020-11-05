@@ -1,0 +1,29 @@
+mongo "mongodb+srv://cluster0-2nlax.mongodb.net/test" --username w2w
+
+
+
+mongodump -d database_name -o output_directory
+
+mongorestore -d mydb2 C:\test\myfirstdb
+
+
+mongoexport -d database_name -c collection_name -o outfile.json
+mongoimport -d database_name -c collection_name outfile.json
+
+C:\Program Files\MongoDB\Server\4.0\bin
+
+
+mongodump -d comment -o e:\comment1
+
+mongodump --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password <PASSWORD> --authenticationDatabase admin --db <DATABASE>
+
+
+mongoexport -d comment-c comments -o outfile.json
+
+mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password vz82j3nGYjoElabG  --authenticationDatabase admin 
+
+mongodump --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password vz82j3nGYjoElabG --authenticationDatabase admin --db comment
+
+
+
+mongorestore --host Cluster0-shard-0/cluster0-shard-00-00-2nlax.mongodb.net:27017,cluster0-shard-00-01-2nlax.mongodb.net:27017,cluster0-shard-00-02-2nlax.mongodb.net:27017 --ssl --username w2w --password vz82j3nGYjoElabG  --authenticationDatabase admin 

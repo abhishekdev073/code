@@ -1,0 +1,101 @@
+1 ASP.NET Web Pages 
+2 Razor - c# coding on view
+3 Namespace - group of types  or container
+4 types -class,struct,enum,intrface,delegate
+5 type member -fields,properties,constructors,methods
+4 delegate - pointer to the function
+5 Value and Reference Types -  value type stack,struct,int,bool,byte ,Primitive data typesreference type heap-Classes,Delegates,string,interface,object,array,indexes,its defualt value is null -both stored in ram
+6  Boxing and Unboxing -box value type to refernce type ; int Val = 1 Object Obj = Val; //Boxing  int i = (int)Obj unboxing
+7 ref keyword and out in method -pass paramter as refrence ref should initialize first and called method not required to assign or initialize
+8 data type :-
+9  complier :- compile code to assembly language
+10 Interfaces -signatures of methods, properties, events or indexers.and can be used as dependcy injection,does not support multiple inhertance but can be achived by interface
+11 Struct -value type
+12 Value type - int,float,double,structs,enums,stack
+13 reference type - interfaces,class,delegate,array,ojbejct,string,heap
+12 Properties :- Properties are named members of classes, structures, and interfaces
+13 Method overloading :- same funtion name with diff parameters,early binding,Static Polymorphism
+13 method overiding :- changing the method of base class,virtual method in base class get overirdden,late binding
+14 Method Hiding : - used in inhertance hide method of base class create method in derived class with new keyword
+15 Polymorphism :- one sample many form Compile time polymorphism/Overloading ,Runtime polymorphism/Overriding
+16 Inhertance :-taking property of one class to another 1 single level,multilevel,does not support multiple inhertance but can be achived by interface
+does not support mutiple inheritacne if addCorlor function present in more that on base class and added too much complexity
+17 Static and Instance class members :- static member can not instantiated,static cant have constructor,fast,Is sealed,Contains only static members
+18 class :- A class is like a blueprint  It defines the data and behavior of a type,A class is a construct that enables you to create your own custom types by grouping together variables of other types, methods 
+
+and events
+18 :- OBJECT :-A class or struct definition is like a blueprint that specifies what the type can do. An object is basically a block of memory that has been allocated and configured according to the blueprint
+19 Mehtods  : -A method is a code block that contains a series of statements
+
+21 operators
+22 public private protected  Access Specifier :public access in anywhere,private access in same class only,protected same class and derived class,
+23 internal  and protected internal Access Specifier :-internal access in current assembly ,protetected Access to current assembly and types derived from containing class
+24 reflection :- Runtime Type Information ,Reflection is the ability of a managed code to read its own metadata for the purpose of finding assemblies,It allows late binding to methods and properties
+25 attribute [obsulete("msg")] :- is declarative tag convey information at runtime, obsulete discard a particular target element to execute
+26 Generics :-Generics allow you to delay the specification of the data type of programming elements in a class or a method, until it is actually used in the program,work with any data type
+27 string n string builder :- String is immutable ,StringBuilder is mutable
+28 partial class,method :-compiler combines  two partial classes into one class ,C# provides the ability to have a single class implementation in multiple .cs
+29 Indexers :- treat object as array to access its value by index 
+30 optional parameters :-An optional parameter has a default value
+30 Named Arguments :-you can send the arguments in any order by ther name showName(name:"abhi",lastName:"yadav").
+31 Code snippets - shortcuts code eg model property,constructor
+32 Dictionary  :- key value pair
+33 array :fixed size access by index,collection of same data type
+33 array list :- contain any data type can grow in size, are boxed and unboxed,it is old
+33 list :- grow in size dynamic sized,provide search sort manipulate,strongly typed list of objects that can be accessed by index,no  are boxed and unboxed,new use list
+33 List collection :- list of collection
+34 Stack and Queue :- stack lifo queue lilo
+35 Threading Protect shared resources,Deadlock ,monitor n lock : -lock keyword ensures that one thread does not enter a critical section of code while another thread is in the critical section.deadlock thread 
+
+lock the resource which other thread need
+
+35 thread :- perform multiple task
+36 Anonymous Methods :- function without name assign to delegate and we can use it 
+37 Lambda Expressions :-annonymous functin  used to create  deleage or expressions
+38 Func Delegate :- Encapsulates a method that has one parameter and returns a value of the type specified by the TResult parameter.
+39 Async and wait :- for synchronus coding
+40 Serialize and desrialize :-
+41 Serialize - converting the object into a form  , stored on a file, database, or memory
+42 Deseialize - getting back the serialized object
+41 extension method  - add method to exsiting type,static method,first parameter is this
+42 route.map    - mapped path of url
+43 checked - check for overflow not constant value
+44 uncheked - ingore overflow exception
+45 unsafe code - u can use pointer 
+46  Data annotations  - used on model class for validation
+47 Helpers  - run function on view @helpers
+48 filters - call filter method before calling actual method action filter,resulter filter , auth filter , excettion filter ,custom filter
+49 cross site scripting    - trusted user enter javascript code in html.
+50 sql injection  -- sql server executed untrusted code
+51 cross site request forgery   - attacker send bugged form to user and users post that form
+52 session fixation  - bugged user machine with session id in cookie,url ,form and users get authenticated with attacker sesssion
+51 sesson hijacking - hijack session by cross site scripting
+52 referrer  - where request coming from
+53 referrer spam-user send fake referrer to search engine
+54 referrer spoofing - send wrong referrer to access others data like image
+55 normalisation 1nf  column of talbe shouled store only one value
+56  2nf not repeation of data -no non-prime attribute
+57  3Nf Transitive functional dependency of non-prime attribute on any super key should be removed ;remove non -prime attibute if depend on super key
+58 class and struct :- classs referencce type,and support inherrtance struct value 
+59 dynamic data-type :- stored and type of data decide at run time ,turn off compile-time checking
+60 stack and heap :- stack at compile time,value type,fast  heap at run time ,slow,
+61 viewbag,viewdata,tempdata :- tempdata from action to action ,viewdata from action to view,viewbag wrapper around viewdata
+62 html helper :- execute code and return string as output
+63 virtual method :- can be redefined in derived classes. overide
+64 abstraction method :-modifier indicates that the thing being modified has a missing or incomplete implementation.we have to overirde it
+65 encapsulation : classes, properties and access modifiers are tools to provide encapsulation in c#,Encapsulation, in the context of C#, refers to an object's ability to hide data and behavior that are not 
+
+necessary to its user
+66 abstraction :-Abstraction means to show only the necessary details to the client of the object
+67 assembly :- gernerated file on compilation dll or .exe
+68 DLL hell :-DLL HELL is the problem where one application will install a newer version of a shared component that is not backward compatible with the version already on the machine.solved with gac by 
+
+versioning
+69 GAC :-Global Assembly cache -C:\Windows\assembly
+70 Sealed :- cant inherit can write sealed on method
+71 Filters :- execute some logic before or after an action method executes Authorization,Action,Exception,Result   filters,
+   Global Level at global.asax  ;Controller level ; action level
+72  diff in encapsulations and abstraction :-Encapsulate hides variables or some implementation that may be changed so often in a class to prevent outsiders access it directly. They must access it via getter        and setter methods.
+     Abstraction is used to hiding something too but in a higher degree(class, interface). Clients use an abstract class(or interface) do not care about who or which it was, they just need to know what it can do
+73 insert val in identity column :- use SET IDENTITY_INSERT Customer ON  
+74  generic and non generic collection :- generic collections are strongly typed ,non-generic collections (ArrayList, Hashtable, SortedKist, Queue etc.) in non generic element stored as object first value get boxed and saved and while retrive value get unboxed

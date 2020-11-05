@@ -1,0 +1,302 @@
+1 React uses component which can be reused like autocomplete
+2 React create component with pure javascript without template
+3 React is ui component library
+4 updating dom is slow as compare generating element in memory
+5 react uses declrative style updating view
+6 jsx transcompile in to javascript with babel 
+7 jsx xml with javascript
+8  passing event handler as property
+9 value and default value
+10 defaultProps
+11 propTypes for error validation
+12  this.props.children
+13 higher order components
+14 jslint webpack hot module replacement
+15 A store that stores all the data and provides methods to manipulate this data.
+   The store is created with the createStore() function
+16 A Provider component that makes it possible for any components to take data from the store
+
+17 A connect() function that wraps any component and lets you map certain parts
+of your application state from the store to the component’s properties
+  
+  Every change in the store is performed via actions
+  Each action tells your application
+  what happened and what part of the store should be changed
+  Every time you call an action every reducer is called
+
+18  The way the data in the store changes is specified by reducers that are pure functions.
+
+19 reducer is a function with state and an action as arguments action can be “to fetch a movie
+
+
+20 store stored the data and changes the data with reducers,provider reflect data changes from strore to 
+component to work with store we need to create createstore,which take reducers as input and gives state output
+we have to render all provider and providers childern components
+
+21  Actions are the only sources of information for the store 
+22 Universal JavaScript with Express and React
+23 babel-register   to import JSX
+24 node-dev restarat server when change detected
+25 pug, mustache ,handlerbars hbs html template
+
+22 As you connect (connect()) the component and map properties of the store to a
+component’s properties (this.props)
+23 Browserify and webpack same
+
+24 $ npm i babel-cli@6.9.0 --save-dev
+$ npm i babel-preset-react@6.5.0 --save-dev
+25 react not uses browser native event instead it uses synthetic event
+26 You can transpile JSX into regular JavaScript by using Babel
+27  ReactDOM.render(
+    React.createElement('h1',null,'Hello world')
+    ,document.getElementById('content')
+   )
+
+28  npm i -g http-server install server  run static to run server
+
+29  React properties are immutable in a context of a current component
+
+30 class HelloWorld extends React.Component {
+    render(){ 
+        return  React.createElement('h1',
+        this.props,
+        `Hello I like to learn ${this.props.frameworkName} world`)
+    }
+}
+
+31  new Date(Date.now()).toLocaleTimeString()
+32 {write javscript logic in jsx}
+   nmp init create package.json file
+
+33  npm i babel-cli@6.9.0 babel-preset-react@6.5.0 --save-dev
+
+34  npx babel script.js --out-file script-compiled.js
+
+35 npx babel script.js --out-file script-compiled.js -w automaticall update when change in file
+
+36 repetition is the mother of skills
+
+37 this.setState(data, callback)
+
+38 this.setState trigger render method this.forceUpdate() trigger render by force
+
+39 Autobinding means the function created with a fat arrow gets the current value of this,
+  which in this case is Clock
+
+  1  setInterval(()=>{
+    this.setState({
+    currentTime: (new Date()).toLocaleString()
+   })
+    }, 1000)
+
+ 2  setInterval(function(){
+   this.setState({
+   currentTime: (new Date()).toLocaleString()
+   })
+    }.bind(this), 1000)
+
+40  Stateless components just take the properties and render the view
+
+
+41  you can use the fat-arrow function syntax
+for brevity (when there’s a single statement, the notation can be a one-liner):
+
+const Link = props => <a href={props.href}
+target="_blank"
+className="btn btn-primary">
+{props.text}
+</a>
+
+
+42 LIFE CYCLE
+
+    Mounting   once   componentWillMount()  componentDidMount()
+    Updating  many time    componentWillReceiveProps(nextProps)) when componet willl be about recive new props
+               shouldComponentUpdate(nextProps, nextState)->
+               componentWillUpdate(nextProps, nextState)—
+                 componentDidUpdate
+      
+
+    Updating  once   componentWillUnmount
+
+
+
+43  fetch('https://www.hdfcsec.com/api/cmsapi/GetArticleById?articleId=37542')
+    .then((response)=>response.json())
+    .then((users)=>console.log(users))
+
+44 componentWillUnmount() remove event listner if u have added any to prevent memory leak
+
+45 Add custom event in react which event not present in react
+componentDidMount() {
+window.addEventListener('resize', this.handleResize)
+}
+componentWillUnmount() {
+window.removeEventListener('resize', this.handleResize)
+}
+
+46  defaultProps
+
+47 prop type of validation  <script src="https://unpkg.com/prop-types/prop-types.js"></script>\
+
+48 this.prop.children
+
+49 higher order component
+50 webpack build tool  features hot module replacement
+
+51 npm init
+//////////////////webpack///////////////////
+
+
+52 Transform your JSX files into JS files: uses babel-loader, babel-core, and babelpreset-
+react
+
+53 minified js files,load css with require,load all file
+
+54 add webpack.config.js file and its setting and run it
+
+55 set package.json with default setting and run npm i
+
+56 webpack uses hot module replacment you dont have to rerun your code it is autocompiled
+
+57 enable hmr for specefic component if(module.hot) {module.hot.accept()}
+
+58 npm run build run script form npm
+59 babel-preset-react is for JSX loader
+
+60 ACITION 	 user input Actions are executed via store.dispatch()
+
+61 to change state we have to dispach action Invoke dispatch() 
+  with an action object that has a type property and has data,
+  if needed, in a component
+62  by connecting componenet to the store it can receive any data from the store and dispatch
+    actions to recive data we need to map state to component properties
+
+62 nodemon will restart the code if you made changes to it
+63 axios for ajax call  with callback graphql for particular data
+64 Mocha, Jasmine, and Jest
+65 rxjs
+66 Universal JavaScript
+77 Handlebars.js, Mustache, Dust.js html template
+
+78 ReactDOMServer.renderToStaticMarkup() method.
+It works similarly to renderToString() but strips out all the data-reactroot, datareactid,
+and data-react-checksum attributes
+
+79   npm i hbs --save  
+80   npm install errorhandler
+
+81 app.use(express.static('public'))   Enables access to all the files under public, such as bundle.js
+
+82  express-validator is convenient middleware because you can set up all kinds of validation rules
+
+83 node dev will restart the code if you made changes to it
+
+
+//////////////////////Shortcuts////////////////////////
+1 cdn path 
+   https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react.js
+   https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react-dom.js
+
+2 var express = require('express')
+   var app = express()
+
+3 app.set('view engine', 'hbs') set template engine
+
+4 app.use(express.static(path.join(__dirname, 'public'))) access static path
+
+5 http.createServer(app).listen(portNumber, callback)
+
+6 babel to compile jsx to js
+  "babel": {
+  "presets": ["react"]
+   },
+
+   $ npm i babel-cli@6.9.0 --save-dev
+   $ npm i babel-preset-react@6.5.0 --save-dev
+
+7  npm install react --save
+   npm install react-dom
+
+8  ReactDOM.render(
+	React.createElement(
+	Link,
+	{href: 'https://Node.University'}
+	)
+	),
+	document.getElementById('menu')
+	)
+
+   ReactDOM.render(
+	<Link href='https://Node.University'/>,
+	document.getElementById('menu')
+	)
+
+
+9 Server-side rendering
+const ReactDOMServer = require('react-dom/server')
+ReactDOMServer.renderToString(Link, {href: 'https://Node.University'})
+ReactDOMServer.renderToStaticMarkup(Link, {href: 'https://Node.University'})
+
+10  Components
+	ES5
+	var Link = React.createClass({
+	displayName: 'Link',
+	render: function() {
+		return React.createElement('a',
+		{className: 'btn', href: this.props.href}, 'Click ->', this.props.href)
+		}
+		})
+ 
+      
+
+       ES5 + JSX
+var Link = React.createClass({
+render: function() {
+return <a className='btn' href={this.props.href}>Click ->
+this.props.href</a>
+}
+})
+
+ES6 + JSX
+class Link extends React.Component {
+render() {
+return <a className='btn' href={this.props.href}>Click ->
+this.props.href</a>
+}
+}
+
+
+11   Lifecycle events
+	componentWillMount function()
+	 componentDidMount function()
+	componentWillReceiveProps function(nextProps)
+	 shouldComponentUpdate function(nextProps, nextState)? bool
+	 componentWillUpdate function(nextProps, nextState)
+	 componentDidUpdate function(prevProps, prevState)
+	 componentWillUnmount function()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

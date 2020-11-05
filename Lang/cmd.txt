@@ -1,0 +1,56 @@
+************on error first check spelling mistake*********  
+
+-------------cmd-------------
+1 node -v -----version
+2 cd..   back
+3 d:  to change drive from c to d
+4 cls   clear screen
+5  dir show current file details
+6 del * delete all files
+7 rd filename  remove diractory
+8 path node react.js run the js code
+
+-------------Git-------------
+
+0 npm install
+1  git init -- initalize repository
+2  git remote add origin "https://github.com/abhishekfin/React-Router.git"
+3  git pull origin master
+
+4  git add file.text
+5  git commit -m "First commit message";
+
+6 git add -A 
+7 git commit -a -m "messsage to commit"
+
+
+8 git branch firstBranch --create brach
+9 git  checkout firstBrach  --switch brach
+10 git merge firstBrach
+
+
+11 git rebase firstBranch
+12 git rebase master
+
+
+13 git push origin master
+
+
+14 git checout "8 digit hexademcimal commit" fileName.text
+15 clear
+16  git status
+17 git log
+18 ls
+19 cat filename.txt -- file details
+20  git remote set-url origin "https://github.com/abhishekfin/React-Router.git"
+21 git remote rm origin
+
+
+
+
+
+
+
+
+
+
