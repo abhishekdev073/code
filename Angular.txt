@@ -1,11 +1,7 @@
 1 npm install -g @angular/cli@latest
-
 2 ng new my-first-angular
-
-3 ng serve  
-
+3 ng serve
 4 ng generate component xyz
-
  CREATE src/app/xyz/xyz.component.html (18 bytes)
 CREATE src/app/xyz/xyz.component.spec.ts (607 bytes)
 CREATE src/app/xyz/xyz.component.ts (263 bytes)
@@ -13,21 +9,23 @@ CREATE src/app/xyz/xyz.component.css (0 bytes)
 UPDATE src/app/app.module.ts (535 bytes)
 
 5 selector: 'app-server' or selector: '[app-server]' or selector: '.app-server'
-
 <app-server></app-server> or <div app-server></div> or <div class="app-server"></div>
 
-6 angular.json  main.ts and index.html
+6 angular.json =>  main.ts and index.html
+  main.ts boostrap the appmodule
+  appmoudule contain all the component and boostrap the main component
+  {
+  declarations: [AppComponent, AngularBasicComponent,MyPipePipe] --  Contain component and pipes 
+  Providers:[services] --add services get injected
+  Import:[FormsModule,browerModule] --Import FormsModule to use ngModel in appmodule
+  boostrap:AppComponent
+  }
+ 
 
-7 main.ts boostrap the appmodule
+7 A polyfill is a browser fallback, made in JavaScript, that allows functionality you expect to work in modern browsers to work in older browsers, e.g., to support canvas (an HTML5 feature) in older browsers.
 
-8 appmoudule contain all the component and boostrap the main component
-
-9 A polyfill is a browser fallback, made in JavaScript, that allows functionality you expect to work in modern browsers to work in older browsers, e.g., to support canvas (an HTML5 feature) in older browsers.
-
-10 :-Components are the main building block for Angular applications
-
-11 Components lifecycle events :- You can respond to events in the lifecycle of a component or directive
-
+8 :-Components are the main building block for Angular applications
+   Components lifecycle events :- You can respond to events in the lifecycle of a component or directive
 		ngOnChanges :- Called before ngOnInit(),called on data-bound input properties change.
 					Note that this happens very frequently,
 					so any operation you perform here impacts performance significantly.
@@ -48,7 +46,7 @@ UPDATE src/app/app.module.ts (535 bytes)
 		ngOnDestroy :- Called immediately before Angular destroys the directive or component
 
 
-12 Component Interaction
+9 Component Interaction
 
   Child to parent ------Input & Output 
     <h3>Agree: {{agreed}}, Disagree: {{disagreed}}</h3>
@@ -78,7 +76,7 @@ export class VoterComponent {
   }
 }
 
-Parent to child
+10 = Parent to child
 Parent interacts with child via local variable
 Parent access child by creating a template reference variable for the child element  #timer
 
@@ -98,7 +96,7 @@ Parent access child by creating a template reference variable for the child elem
 
 //// Parent calls an @ViewChild() /////////
 
-inject the child component into the parent as a ViewChild.
+11 : inject the child component into the parent as a ViewChild.
 
 <button (click)="start()">Start</button>
   <button (click)="stop()">Stop</button>
@@ -107,23 +105,22 @@ inject the child component into the parent as a ViewChild.
 
 
 export class CountdownViewChildParentComponent implements AfterViewInit {
-
   @ViewChild(CountdownTimerComponent)
-  private timerComponent: CountdownTimerComponent;
- 
+  private timerComponent: CountdownTimerComponent; 
   seconds() { return 0; }
   start() { this.timerComponent.start(); }
   stop() { this.timerComponent.stop(); }
  
   }
 
-  Parent and children communicate via a service
+ 11 -  Parent and children communicate via a service
+ 12 :- Event EventEmitter
  
   
 13 @Input() and @Output() properties
 
  input send data from parent to child
- call from child to parent
+ @Output() call from child to parent
  
  <app-input-output [item]="currentItem" (deleteRequest)="crossOffItem($event)"></app-input-output>
  
@@ -134,25 +131,267 @@ export class CountdownViewChildParentComponent implements AfterViewInit {
 14 Dynamic component loader
 
 ComponentFactoryResolver to add components dynamically.
-
 The anchor directive  :- Define anchor point to tell Angular where to insert components
 
  <ng-template adHost></ng-template>
 
+15 Angular elements 
+   Angular elements are Angular components packaged as custom elements (Web Components) create new custom tag which work with any framework and lib. less code of angular
 
+16 :- Template :- a template is a chunk of HTML. Within a template, you can use special syntax to leverage many of Angular's features. 
 
-
-
-
-
-
-
+17 Interpolation {{...}}  <h3>Current customer: {{ currentCustomer }}</h3>
+   <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p> 
+    <li *ngFor="let customer of customers">{{customer.name}}</li>
+     <input #customerInput>{{customerInput.value}}
+   <button *ngFor="let hero of heroes" (click)="deleteHero(hero)">{{hero.name}}</button>
  
- 
 
- 
+18 Pipes :-Transforming Data Using Pipes
+   ng generate pipe pipeName
+   <p>The hero's birthday is {{ birthday | date }}</p>
+   <p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
 
+   Applying two formats by chaining pipes
+    The chained hero's birthday is
+    {{ birthday | date | uppercase}}
 
+    To execute a custom pipe after a change within a composite object use pure :false, slow the app
+
+19 2 way bining <div>Normal power: <input [(ngModel)]="power"></div>
+
+20 :- Observables 
+   work on continous data of stream
+   pass messages between parts of your application. Observables are recommended for event handling, asynchronous programming, and handling multiple values
+   pipe in observable <p>Message: {{ message$ | async }}</p>
+ 
+21  Data binding
+   source-to-view :- {{expression}}
+                     [target]="expression"
+                      bind-target="expression"  // one way
+   view-to-source :- (target)="statement" on-target="statement" // one way
+   view-to-source-to-view :-  [(target)]="expression" bindon-target="expression"  // 2 way
+               OR
+    <app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
+    Every public member of a source directive is automatically available for binding
+ 
+ 21 :- HTML attribute and the DOM property are different things, even when they have the same name. (attr/property :- id,property:textContetn,attr:area*)
+   In Angular, the only role of HTML attributes is to initialize element and directive state
+	Template binding works with properties and events, not attributes.
+	Attributes initialize DOM properties and then they are done. Property values can change; attribute values can't.
+	
+	<input [attr.disabled]="condition ? 'disabled' : null">
+	There is one exception to this rule. Attributes can be changed by setAttribute(), which re-initializes corresponding DOM properties
+	
+22 	Binding 	Property
+	   <img [src]="heroImageUrl">
+     <app-hero-detail [hero]="currentHero"></app-hero-detail>
+     <div [ngClass]="{'special': isSpecial}"></div>
+   Event
+   
+    <button (click)="onSave()">Save</button>
+    <app-hero-detail (deleteRequest)="deleteHero()"></app-hero-detail>
+    <div (myClick)="clicked=$event" clickable>click me</div>
+ 
+   Two-way :- <input [(ngModel)]="name">
+   
+   Attribute  :-   <button [attr.aria-label]="help">help</button>
+	
+   Class :- <div [class.special]="isSpecial">Special</div>
+   
+   Style <button [style.color]="isSpecial ? 'red' : 'green'">
+                [style]="styleExpression"
+   
+ 
+23 Property binding
+    <img [src]="itemImageUrl">
+    The brackets, [], cause Angular to evaluate the right-hand side of the assignment as a dynamic expression. 
+    no [] static value
+   <app-item-detail childItem="parentItem"></app-item-detail>
+   
+   <p><img src="{{itemImageUrl}}"> is the <i>interpolated</i> image.</p>
+   <p><img [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
+   
+24 Template expression operators  
+   <p>Item json pipe: {{item | json}}</p>
+   <p>The item name is: {{item?.name}}</p>   
+   Sometimes a binding expression triggers a type error during AOT compilation 
+   <p>The item's undeclared best by date is: {{$any(item).bestByDate}}</p>
+   
+25 Directives   
+  ng generate directive highlight
+  attribute directives :- change the appearance or behavior of an element, component, or another directive.
+  structural directives. -- change the DOM layout by adding and removing DOM elements.. 
+  Components directives --directives with a template
+  
+  Attribute directives:-
+  NgClass :- <div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
+  NgStyle :-   <div [ngStyle]="currentStyles">
+  NgModel
+  
+  structural directives :-
+  They shape or reshape the DOM's structure, typically by adding, removing, and manipulating the host elements to which they are attached.
+  NgIf   :-  <app-item-detail *ngIf="isActive" [item]="item"></app-item-detail>
+  NgFor   :- <div *ngFor="let item of items; let i=index">{{i + 1}} - {{item.name}}</div>
+  NgSwitch
+  ngFor with trackBy rerender only if mentioned property is changed in deep object
+  
+  Custom directive :
+  it is like component dont have template
+  we can change style by using ElementRef
+  add event using HostListener
+  we can also create custom structural directive 
+   
+26 :- The asterisk (*) prefix
+     <div *ngIf="hero" class="name">{{hero.name}}</div>
+  	 get converted into this 
+	 
+	 <ng-template [ngIf]="hero">
+        <div class="name">{{hero.name}}</div>
+      </ng-template>
+
+   
+27 :- Dependency injection  
+ 
+    ng generate service heroes/hero
+    help in mocking
+	  Single instance in the entire app, unless you configure another provider with a child injector.
+	  @Injectable() creating service instances and inject the service in component	
+    Class asks for dependencies from external sources rather than creating them itself.
+	  DI framework provides declared dependencies to a class when that class is instantiated.
+ 	 supply data to a component from an injectable service class
+	
+	When you add a service provider to the root application injector, it’s available throughout the app.
+	
+	Configure service to provider
+	  In the @Injectable() decorator for the service itself.
+      In the @NgModule() decorator for an NgModule.
+      In the @Component() decorator for a component.
+ 
+28  :-Lazy loading modules
+ 
+    Lazy loading is when you load modules only when you need them ex routing
+    normal :- application injector makes all of the providers in all of the modules available throughout the app.
+	Root inject every module is create child injector
+	Router add all the providers from root injector to child injector
+	compoonent get local instance of service instead of root application injector
+	external recive instance of application root
+	
+	Angular version 9, you can provide a new instance of a service with each lazy loaded module
+	@Injectable({
+     providedIn: 'any',
+   })
+   
+   Component providers and NgModule providers are independent of each other
+   we can load service in component only does not loaded in moudule
+   @Component({providers: [UserService]})
+   
+29 :- Dependency providers
+      providers: [Logger]
+	  [{ provide: Logger, useClass: Logger }] uses logger
+	  [{ provide: Logger, useClass: BetterLogger }] uses BetterLogger
+	  
+	  [ NewLogger,
+  // Alias OldLogger w/ reference to NewLogger
+  { provide: OldLogger, useExisting: NewLogger}]
+     when we called oldLogger new logger get called
+   we can also provide object as DI
+   
+30   Tree-shakable providers : provided will not be included in bunder if its not used
+	
+31 :- Multiple service instances (sandboxing)
+     Provide services at component level
+
+32 :- Make a dependency @Optional and limit search with @Host
+
+      constructor(
+      @Host()     // limit search for logger; hides the application-wide logger
+      @Optional() // ok if the logger doesn't exist
+      private loggerService?: LoggerService
+      ) 
+
+33 :- custom provider allows you to provide a concrete implementation for implicit dependencies, such as built-in browser APIs
+       
+34 : Modify the provider search with @Self and @SkipSelf
+  	   @Self :- the injector only looks at the component's injector for its providers
+	     @SkipSelf : - skip the local injector and look up in the hierarchy 
+	    constructor(
+        @Self() private sessionStorageService: BrowserStorageService,
+        @SkipSelf() private localStorageService: BrowserStorageService,
+    ) 
+
+35 :- to break cicular dependencies 
+       providers: [{ provide: Parent, useExisting: forwardRef(() => AlexComponent) }],	
+	   
+	    forwardRef() Allows to refer to references which are not yet defined.
+		
+36 : Routing		
+     create app.routing module add in app.module  
+     add path in routes array
+	 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'detail/:id', component: DetailsComponent },
+  { path: '**', component: NotFoundComponent },
+  {
+    path: 'first-component',
+    component: FirstComponent, // this is the component with the <router-outlet> in the template
+    children: [
+      {
+        path: 'child-a', // child route path
+        component: HeroComponent, // child route component that the router renders
+      },
+      {
+        path: 'child-b',
+        component: DateComponent, // another child route component that the router renders
+      },
+    ],
+  },
+];
+
+37 nested route add route-outlet and matching url get loaded
+38   read param from url 
+       constructor(private route: ActivatedRoute) {}
+      this.route.queryParams.subscribe(params => {
+        this.name = params['name'];
+        });
+39  this.router.navigate(['/heroes', { id: heroId }]);		
+
+40 :- route guards
+      ng generate guard your-guard
+      Prevent route to authrosed
+	   CanActivate
+       CanActivateChild
+       CanDeactivate
+       Resolve
+       CanLoad
+41 link parameter array 
+   <a [routerLink]="['/hero', hero.id]">
+   
+    PathLocationStrategy—the default "HTML5 pushState" style.
+    HashLocationStrategy—the "hash URL" style.
+	
+42 :- HTTP
+	 import { HttpClientModule } from '@angular/common/http';
+	   return this.http.delete(url, httpOptions)
+    .pipe(
+      catchError(this.handleError('deleteHero'))
+    );
+	
+43 : -interceptors  
+       inspect and transform HTTP requests from your application to a server.	
+	    caching,adding header,logging
+44  Internationalization
+       Localizing your app :- dates, times, numbers, and currencies 
+45 :- schematic 
+          create code like angular cli command
+       schematic is a template-based code generator that supports complex logic.	   
+46 :- service worker and PWA progressive web app
+      manage caching of application 
+     cache application like installing native application
+      update happend in background
+	   it download manifest from server :which file to cache. inform new version available downloaded and cached
+  
  
 
 
