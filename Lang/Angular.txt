@@ -2,7 +2,7 @@
 2 ng new my-first-angular
 3 ng serve
 4 ng generate component xyz
- CREATE src/app/xyz/xyz.component.html (18 bytes)
+CREATE src/app/xyz/xyz.component.html (18 bytes)
 CREATE src/app/xyz/xyz.component.spec.ts (607 bytes)
 CREATE src/app/xyz/xyz.component.ts (263 bytes)
 CREATE src/app/xyz/xyz.component.css (0 bytes)
