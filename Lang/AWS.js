@@ -253,17 +253,36 @@ VPC-Virtula private cloud
       ECS :- Amazon own platform
       Fargate :amazon own serverless platform
 
- 46. ECS Cluster :-  logical grouping of EC2 instances 
+ 46. ECS Cluster (Elastic container service) :-  logical grouping of EC2 instances 
                   EC2 instances run ECS agent(Docker container)
                    ECS agent register instances to ECS cluster
                    EC2 instances run special AMI made for specially for ECS
 
+            We create ECS cluster: ASG get created :- EC2 get created 
+
+ 47  ECS Task definition :its metadata JSON to tell ECS how to run a Docker container
+                         Image name,Port binding in container and host,Memory and CPU required
+                         Environment variable and Networking information             
+48   ECS Services :-How many task run and How should they run
+49 Fargate :-Its all serverless. No more EC2 instances for docker directly use container
 
 
 
+///////////////////////////BeanStalk///////////////////
+50 BeanStalk:- Application to deploy application on aws ,free
+51 . BeanStalk deployment option for update
+          1. all at once - stop all instance deploy and start
+          2. rolling :-update few instance at time
+          3.Rolling with additional batches :- spin new instance to move the batch(old application available)
+          4. Immutable :-Spins up new stance in new ASG, deploy version to these instances. swap all instance when everything is healthy   
 
+          //////////////////////////CICD/////////////
+52  CICD:- Code push code get deployed / continuous integration : jenkins ,teamcity,codebuild AWS
+   Code deploy AWS
+  
+   Codecommit AWS = git
 
-
+ 53 ///////////////////////////CloudFormation//////////////////////////  
 
 
 
