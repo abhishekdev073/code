@@ -22,7 +22,7 @@ SAML
     SSH for Mac/Window 10/Linux
     EC2 connect for all from browser 
 
-5 Security groop :- Allow traffic of EC2 Instance	(Inbound outbound)
+5 Security group :- Allow traffic of EC2 Instance	(Inbound outbound)
    Inbound rule we add rule to access(what we can access)
    its work as firewall 
    Security group can have multiple groups   
@@ -38,18 +38,18 @@ SAML
    
    
 7 To update server := yum update -y   
-8 EC2 User Data :-this script run once when instance start. use to boostrap. We automate task
+8 EC2 User Data :-this script run once when instance start. use to bootstrap. We automate task
    Installing update,installing software,download common file
    this script runs as root user :- run commands
     
 9 Type of instances
     1.On demand instance:-short workload , predictable price (billing per second) (pay letter)
-    2.Reserved instance : Minimum 1 year , large workload (pay upfornt 75% disccout)
-	  Convertible Reserved instance :- Can change EC2 instance, upto 54% disscount
-	  Schedule reserved instance :- Lanch in time when you reserve         
+    2.Reserved instance : Minimum 1 year , large workload (pay upfront 75% discount)
+	  Convertible Reserved instance :- Can change EC2 instance, upto 54% discount
+	  Schedule reserved instance :- Launch in time when you reserve         
 	  
-    3.Spot instance :- short workload cheap, can loose instance (90% disscount)
-	    Looses Stop instane : when ur max price is less than current spot price
+    3.Spot instance :- short workload cheap, can loose instance (90% discount)
+	    Looses Stop instance : when ur max price is less than current spot price
     4. dedicated instance :-No other customer share your hardware
     5. Dedicated hosts :- Book entire physical server  	
 	
@@ -58,10 +58,10 @@ SAML
 
 ///////////////////////////////////ELB and ASG/////////////////////////////////////////////
 
-12 Scaling :- Vertical scaling increase size, horizonatl scaling increase the number
-13 Load Balancer(Elastic load balancer:ELB-AWS) :-EC2 Load balancer:- Forword internet traffic to servers
-   Its keep checking health of server every sepecfied second
-   enforce cookies stickness
+12 Scaling :- Vertical scaling increase size, horizontal scaling increase the number
+13 Load Balancer(Elastic load balancer:ELB-AWS) :-EC2 Load balancer:- Forward internet traffic to servers
+   Its keep checking health of server every specified second
+   enforce cookies stickiness
    we can setup private or public ELB
    Only load balancer can send request then :- We create security group for load balancer with any one access (source :0.0.0.0)
    then Application security group only access to load balancer by (source:security group id of load balancer)  
@@ -69,29 +69,29 @@ SAML
    3 type of load balancer
    1.classic load balance (Layer 4,7)  :- http,https,tcp
    2.Application load balancer (Layer 7) :- http ,https, websocket, can redirect form http to https
-     Routing(redirect) basesd on path in URL,HostName,query string,header (we can redirect based on this value to different EC2 instance)
-	  abc.com/user - /abc.com/about , my.abc.com - kk.abc.com, ab.com?id=34  Add rule in listner
-   3.Network load balancer(Layer 4) :-TCP,TLS,UDP - Less latancy 100ms
-      1 statik IP per AZ,support assigning elastic IP (helpful for white listing sepecific IP)
-	  want exptrem perforance or want static IP
-14 Load balancer stickness (setting target load balancer) :- same client get redirected to same EC2 instace always  with help of cookie
+     Routing(redirect) based on path in URL,HostName,query string,header (we can redirect based on this value to different EC2 instance)
+	  abc.com/user - /abc.com/about , my.abc.com - kk.abc.com, ab.com?id=34  Add rule in listener
+   3.Network load balancer(Layer 4) :-TCP,TLS,UDP - Less latency 100ms
+      1 static IP per AZ,support assigning elastic IP (helpful for white listing sepecific IP)
+	  want extreme performance or want static IP
+14 Load balancer stickiness (setting target load balancer) :- same client get redirected to same EC2 instance always  with help of cookie
                                this work with CLB and ALB
 15 Cross Zone load balancer (Evenly distributed traffic to EC2 instance) :- Load balancer ditstributes all in register EC2 instance AZ	
-                        CLB - disabled default, dont have to pay extra for Enable 
+                        CLB - disabled default, don't have to pay extra for Enable 
 						ALB - Enable default, cant disable 
 						NLB - disabled default, pay extra for Enable
-16 SSL/TLS :- SSL certificate traffic between client and load balancer get encrytped in transit	
+16 SSL/TLS :- SSL certificate traffic between client and load balancer get encrypted in transit	
    SSL :- Secure socket layer , TLS :-(Transport layer security ) newer version of SSL
    LB uses SSL/TLS certificate, you can manage certificate using ACM(AWS certificate manager)   
-   ALB,NLB support multiple certificates (SNI :-servername indication) then can work with multiple domain (multiple suport group)
+   ALB,NLB support multiple certificates (SNI :-servername indication) then can work with multiple domain (multiple support group)
 17 Auto Scaling Groups(ASG) :-Increase or decrease EC2 instance based on load , CPU usage,Network usage ,custom metric schedule timing usage alarm of cloudfront
-   If instance under ASG get terminitted for some resaon then ASG will create new one
-   Load balance will mark instance unhealthy then ASG will detroy and create 
-   Minimum and Maximum no size of instace set    
+   If instance under ASG get terminated for some reason then ASG will create new one
+   Load balance will mark instance unhealthy then ASG will destroy and create 
+   Minimum and Maximum no size of instance set    
    
 ////////////////////////////////////EC2 storage :- EBS, EFS
-18 EBS (Elastic book store) :- when main instance terminited drive data get lossed 
-  EBS :- network drive you can attach to your intance when they run . allow to save data like(DB)
+18 EBS (Elastic book store) :- when main instance terminated drive data get losses 
+  EBS :- network drive you can attach to your instance when they run . allow to save data like(DB)
   its based on zone, one zone can not access other zone 
 19 : EBS vs Instance store :- EBS network drive like PD Instance store is attached to machine its very fast
 20 EFS :- Elastic File system :- its work with multiple AZ,expensive
@@ -103,11 +103,11 @@ SAML
 	Multi AZ :- if one DB goes down we can use our DB of backup
 	Aurora DB:- AWS databases its fast on RDS. not open source. It create read replica	
 	Master and replica used shared storage
-	Aurora servelss :-DB it scale automatically based on load
+	Aurora serverless :-DB it scale automatically based on load
 22 ElasitCache :-  managed by Redis or Memcached. Cache memory for high performance. Ram
    We can share state in multiple application
 	
-VPC-Virtula private cloud
+VPC-Virtual private cloud
 ///////////////////////Route S3///////////////////////////
 23 Route S3 :- Managed DNS
         A: Host name to IPV4
@@ -117,22 +117,22 @@ VPC-Virtula private cloud
    Can buy Domain around 12$
 24 :TTL (Time to live) :-Browser cache S3 route DNS response for TTL time  
 25 : CNAME vs Alias :-
-       Cname can point to any domaon. not work with root domain
+       Cname can point to any domain. not work with root domain
 	   alias should point to AWS domain
 	   Alisa free , health check.work with root domain
 26 Routing Policy :simple :- Client side load balancing :- return IP from S3 route	
-   Weighted routed policy :- Can split traffic between instaces like (instanc1 40% ,instance2 30%, instace3 30%)  
-                                 return single IP based on perforance
-   Latency Policy :- User get redirected to instace which has less latency(CDN)		
+   Weighted routed policy :- Can split traffic between instances like (instance1 40% ,instance2 30%, instance3 30%)  
+                                 return single IP based on performance
+   Latency Policy :- User get redirected to instance which has less latency(CDN)		
    Health check : Default 3 request to determine is healthy ro not healthy 
                   Route s3 :- health check and return health instance   
-   Geo Location Policy :- User from specfic location goes to specific IP
-   Multi routing policy :- Return healty muliplie IP browse chooses any     
+   Geo Location Policy :- User from specific location goes to specific IP
+   Multi routing policy :- Return healthy multiple IP browse chooses any     
 			
 ////////////////////////////VPC///////////////////
-27 VPC :- Virtual Private Cloud :- Private network to deploy your resoureces (Regional resource) 2 Region == 2 VPC	
+27 VPC :- Virtual Private Cloud :- Private network to deploy your resources (Regional resource) 2 Region == 2 VPC	
     AWS => Region => VPC => Subnet 1, subnet2     
-    Subnet:- Allow partition netowrk inside your VPC (AZ resource) -public subnet,Private subnet	
+    Subnet:- Allow partition network inside your VPC (AZ resource) -public subnet,Private subnet	
 	Internet gateway & NAT Gateways 
 	Internet Gateway :-Help VPC instance to connect to internet
 	                   Public subnet have route to Internet Gateway
@@ -145,7 +145,7 @@ VPC-Virtula private cloud
                VPC flow logs
                 Subnet flow logs
                 Elastic network interface log 
-     Monitor and troublshoot connectivty issue eg .Subnet to internet, subnet to subnet, internet to subnet 
+     Monitor and troubleshoot connectivity issue eg .Subnet to internet, subnet to subnet, internet to subnet 
      VPC flow logs data can go to S3/Cloudwatch logs	
 30 VPC peering :- Connect to 2 Vpc, Privately using AWS network 
                   Make them behave as they are in same network
@@ -157,15 +157,15 @@ VPC-Virtula private cloud
  
 32 S3 :- 4 types of method to encrypt file
           1.SSE-S3 : Key handled and managed by AWS		  
-		            must se header :- x-amz-server-side-encyription:'AES256'		  
+		            must se header :- x-amz-server-side-encryption:'AES256'		  
 		  2.SSE-KMS :-Leverage AWS key management service to manage to encryption key (User master key defined on s3)
-		           must se header :- x-amz-server-side-encyription:'aws:kms'	
+		           must se header :- x-amz-server-side-encryption:'aws:kms'	
           3. SSE-C :-when you want to manage your own encryption key. must used:https 
 		     Data key in header
           4. Client side encryption 
 33 S3 Security 
           User based :IAM
-		  Resourece based :-Bucket policies
+		  Resource based :-Bucket policies
 		                   Object Access control list (ACL)
                            Bucket Acess control list (ACL)	
 						   
@@ -174,7 +174,7 @@ VPC-Virtula private cloud
 
 34 AWS CLI on local :cmd :- aws configure > enter Access keyId, Access key,Region,Default output format :none (On your local)
 35 AWS CLI on EC2 :- Use IAM roles to access  
-             run  aws configure ,dont put AWS access key and ID 
+             run  aws configure ,don't put AWS access key and ID 
                 curl instance/meta-data get meta data	
  
    AWS configure --profile myOhterawsaccount (to use multiple AWS account in CLI)
@@ -188,10 +188,10 @@ VPC-Virtula private cloud
 
   SDK :- Software development kit to call from code		
 
-36 : Exponentail backoff : if server has limit number request per second  (Throttling expeption)
+36 : Exponential backoff : if server has limit number request per second  (Throttling expeption)
                            1 req wait 1 second
                             2nd req wait 2 second so on...	
-37 : SigV4	: you are singed in with your credentail to access AWS	(like video)
+37 : SigV4	: you are singed in with your credential to access AWS	(like video)
                 Added in header or in Querystring					
 							
 							
@@ -203,16 +203,16 @@ VPC-Virtula private cloud
 41 S3 storage class :- 
              1. S3 Standard general purpose :-High durability (99.99999%)
              2. S3 standard :Infrequent Access(IA) : low cost 
-             3. S3 one Zone :Infrequest Access : 99.5 availabitly less cost than IA (single zone can loss)	
+             3. S3 one Zone :Infrequent Access : 99.5 availability less cost than IA (single zone can loss)	
              4. S3 intelligent Tiering :-Small Montly monitoring and tiering fees 
                                         Move the object access tier based on its use
-             5. Amazon Glaciar :- Archive save data (month:- very low 0.004$/GB + retrival cost) (minimum 90 days)
-                  Retrival Options 
+             5. Amazon Glacial :- Archive save data (month:- very low 0.004$/GB + retrieval cost) (minimum 90 days)
+                  Retrieval Options 
                    Expedited :- (1 to 5 minutes)
                    Standard (3 to 5 hours)
                    Bulk (5-12 hours) 		
-             6. Amazon Glaciar Deep Archive : super long term  (minimum 180 days)
-				    Retrival Options 
+             6. Amazon Glacier Deep Archive : super long term  (minimum 180 days)
+				    Retrieval Options 
 					Standard - 12 hours
 					Bulk - 48 hours
 42 S3 event Notification : On S3.objectCreated. On S3.objectRemovd
@@ -283,7 +283,7 @@ VPC-Virtula private cloud
    Codecommit AWS = git
 
      ///////////////////////////CloudFormation//////////////////////////
- 53 : CloudFormation :- code will deploy create,delete,update our infrastructre 
+ 53 : CloudFormation :- code will deploy create,delete,update our infrastructure 
  
  
  
@@ -294,10 +294,10 @@ VPC-Virtula private cloud
 					logs,
 					Event,
 					alarm
-      AWS X-ray :- troubleshoot perforance
+      AWS X-ray :- troubleshoot performance
 	   AWS cloudTrail :-Internal monitoring of api calls
 	   
- 55 :- Lambda : serverless :We dont manage server
+ 55 :- Lambda : serverless :We don't manage server
  
  56 :-Event bridge:- invoke lambda like jobs
     S3 event can call lambda
@@ -312,11 +312,11 @@ VPC-Virtula private cloud
  58 SAM :-Serverless application model :- Framework for development and deploy serverless application
  
  ////////////////////////////Congnito///////////////////////
- 59 Congnito :- Give user identity so that they can interact with our application
+ 59 Cognito :- Give user identity so that they can interact with our application
  60 Cognito user pool :- user get logged in Cognito user pool: from google,facebook,saml,from mobile or web. its gives JWT to user
-                   User get autheticate with CUP its give JWT and every gateway api call JWT get validated. then access data
- 61 Cognito Identity poo :- Uses obtaion temporary AWS credentails 
-           (Public provider(google,facebook,),Developer authenticated identies (custom login server) )
+                   User get authenticate with CUP its give JWT and every gateway api call JWT get validated. then access data
+ 61 Cognito Identity poo :- Uses obtain temporary AWS credentials 
+           (Public provider(google,facebook,),Developer authenticated identities (custom login server) )
    
  
  
