@@ -30,7 +30,7 @@ SAML
    includes IP and other security group
 
 6 Public Private Elastic IP :- 
-    We get 1 private IP and 1 public IP on EC2 instance
+   We get 1 private IP and 1 public IP on EC2 instance
    Elastic IP (5 on account):-  restart EC2 instance its get new IP, to get Fix we use Elastic IP. you own it untill you delete it
    Avoid Elastic IP use Public Ip assign DNS to it
    When machine restart Public IP changes
@@ -282,7 +282,46 @@ VPC-Virtula private cloud
   
    Codecommit AWS = git
 
- 53 ///////////////////////////CloudFormation//////////////////////////  
+     ///////////////////////////CloudFormation//////////////////////////
+ 53 : CloudFormation :- code will deploy create,delete,update our infrastructre 
+ 
+ 
+ 
+ //////////////////////Monitoring////////////////
+ 54 :- AWS cloudWatch:-
+                    Metric :- AWS provide metrics for every service
+					 
+					logs,
+					Event,
+					alarm
+      AWS X-ray :- troubleshoot perforance
+	   AWS cloudTrail :-Internal monitoring of api calls
+	   
+ 55 :- Lambda : serverless :We dont manage server
+ 
+ 56 :-Event bridge:- invoke lambda like jobs
+    S3 event can call lambda
+  ///////////////////////DynamoDb//////////////////////////////////
+  
+  DynamoDb :- Aws database automatically scale,Nosql
+  //////////////////////////API gateway/////////////////////////////
+  
+ 57  Api gateway:- route for lambda
+ 
+ /////////////////////////SAM///////////////
+ 58 SAM :-Serverless application model :- Framework for development and deploy serverless application
+ 
+ ////////////////////////////Congnito///////////////////////
+ 59 Congnito :- Give user identity so that they can interact with our application
+ 60 Cognito user pool :- user get logged in Cognito user pool: from google,facebook,saml,from mobile or web. its gives JWT to user
+                   User get autheticate with CUP its give JWT and every gateway api call JWT get validated. then access data
+ 61 Cognito Identity poo :- Uses obtaion temporary AWS credentails 
+           (Public provider(google,facebook,),Developer authenticated identies (custom login server) )
+   
+ 
+ 
+ 
+    
 
 
 
