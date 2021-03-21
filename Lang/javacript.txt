@@ -1,0 +1,158 @@
+1 syntax parser :- A program that read your code and determine and what it does and if its grammar is valid
+2 Lexical environment :- where something sit physically in the code you write
+3 Execution context :- Wrapper to help manage the code that is running, when function is called new execution context is crated
+4 Global :- Not inside function
+5 Hoisting :- Memory get allocated for variable and function while Execution context get created
+6 JavaScript is single threaded,
+7 Scope :-Where variable is available in your code
+8 Let : block scope, not Hoisting, can not redeclare,get different variable in Memory each time loop run
+9 Types in JavaScript :- 1. Primitive Types :- types of data that represent single data. that is not a object 
+                    Value type we can not change that we have reassign value
+10 Dynamic type :- We don't tell what kind of data we variable hold its get decided at runtime
+11 Object :- Key value pair var obj  = new Object()
+12 Object literal :- var obj = {}
+13 Function are object,we can attach property, it has property NAME,CODE  
+14 First class function : Everything we can do with other types we can do with function.Assign them to variable,pass them, create them on fly
+15 Function statement :- if  dont return anything
+16 Function expression :- unit of code that results in a value. it doest have to save variable
+16 Anonymous  function : function does not have name with reference with a variable
+17 Pass by value (Primitive type) , pass by reference(arr,object) :-
+18 Mutated :mean can be change, Immutable :- can not change
+19 this :- from where function is being called
+20 Spread parameters :-(val1,val2 ,...otherParameter) access all parameters arguments
+21 IIFE :Immediately invoke function :- function(){}() : (function(val1){}('parameters'))
+22  (function(window,val1){}(window,'parameters')) :- pass paramter to 
+23 Closers :- function remember its outer variable and function 
+24 Call Apply and Bind :- Change to this 
+                      var changedThis = myFunction.bind(this);changedThis();
+                      myFunction.call(this,param1,param2);  pass parameter 
+                       myFunction.apply(this,[param1,param2]); pass array 
+
+25 Curring :- Crating copy of function parameter with some preset parameter :/ used in mathematical 
+              function multi(a,b){
+                  return a*b;
+              }         
+
+              var multiby2 = multi.bind(this,2);
+              multiby2(4);
+
+26 Inheritance :- Object get access to properties and method of another object
+27 Prototype :- All object in JavaScript has property prototype which is reference to other object.
+              it get used by new operator
+28 New  :- var john = new User() , new will create new object var ={} .if you don't return value then JavaScript
+         will return new object that is crated by new
+         Construct a object with a function  
+                                 function User(fname,lname){
+                                        this.name= fname
+                                        this.lName =lname;
+                                        this.getFullName = function(){
+                                            return this.name +this.lname;
+                                        }
+                                    }   
+          //////////////Inheritance 1//////////////////////////////////
+                                    function User(fname,lname){
+                                        this.name= fname
+                                        this.lName =lname;
+                                    }  
+                                    User.prototype.getFullName = function(){
+                                            return this.name +this.lName;
+                                     }
+
+                                     function SmartUser(fname,lname,age){
+                                         User.call(this,fname,lname);
+                                         this.age = age;
+                                     }
+                                     SmartUser.prototype =  User.prototype;
+                                   //   SmartUser.prototype = Object.create(User.prototype);
+                                     SmartUser.prototype.fullDetail = function(){
+                                            return "my full details is " this.name +" "+this.lname +"age ="+ this.age;
+                                     }
+                                     var smartUser = new SmartUser('abhishek','yadav',27);
+                                     console.log(smartUser.getFullName())
+                                     console.log(smartUser.name)
+                                     console.log(smartUser.lName)
+                                     console.log(smartUser.age)
+                                     console.log(smartUser.fullDetail())
+
+
+
+
+
+               Don't use method inside function if we have multiple object function get method get repeated in Memory
+               User.prototype.getFullName = function(){
+                                            return this.name +this.lname;
+                                        }
+               instead of that Assign that method to prototype it will get crated only once in Memory                             
+ Function constructor :-Normal function that is used to construct a object
+                         The 'this' variable point to new empty object. and that object is get return automatically                                                
+ 29 Pure Prototype Inheritance :- 
+            Var user = {
+                name:'default',
+                lName:'default',
+                getFullName:function(){
+                    return this.name+ this.lName
+                }
+            }
+
+            var john = Object.create(user)
+ 30 class :- JavaScript does not have class internally it uses prototype : its Synthetic sugar around object
+        //Synthetic sugar :-different way to type something it doest change how it works under the hood
+                        //////////////Inheritance 2 class//////////////////////////////////
+                             class User{
+                                 constructor(name,lname){
+                                       this.name = name;
+                                      this.lName = lname;
+                                    }
+                                        getFullName(){
+                                      return this.name + this.lName;
+                                    }
+                               }
+                            class SmartUser extends User{
+                                          constructor(name,lname){
+                                                 super(name,lname);
+                                                 this.age = age;
+                                           }
+                                            fullDetail = function(){
+                                                   return "my full details is +" this.name +" "+this.lname +"age ="+ this.age;
+                                             }
+                             }                                    
+                                    
+                            var smartUser = new SmartUser('abhishek','yadav',27);
+                            console.log(smartUser.getFullName())
+                            console.log(smartUser.name)
+                            console.log(smartUser.lName)
+                            console.log(smartUser.age)
+                            console.log(smartUser.fullDetail())
+
+
+31 "use strict" : Add extra rule while it parse the code like if we Assign value to variable without declaring it
+                     name ='abhishek' throw error
+
+///////////////////////////Library like jquery ///////////////////////////////
+ (function(global) {
+    var MyLib = function(val1, val2, val3) {
+        return new MyLib.init(val1, val2, val3);
+    }
+    MyLib.prototype = {
+        fullName:function(){
+            return this.val1 + this.val2 + this.val3
+        },
+         hello:function(){
+             return "hello"this.val1
+        },
+         hi:function(name){
+            return "hi "+name
+        }
+    };
+    MyLib.init = function(val1, val2, val3) {
+       var self = this;
+       self.val1 = val1
+       self.val2 = val2
+       self.val3 = val3
+    }
+    MyLib.init.prototype = MyLib.prototype;
+    global.MyLib = global.G$ = MyLib;
+}(window));
+var g = G$('abhishek','yadav','234')
+console.log(g.hi('22222'))
+console.log(g.hello())
